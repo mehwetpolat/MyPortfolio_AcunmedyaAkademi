@@ -39,5 +39,13 @@ namespace AcunMedyaAkademiPortfolyo.Controllers
             var value = db.TblContact.Find(id);
             return View(value);
         }
+
+        public ActionResult DeleteContact(int id)
+        {
+            var values = db.TblContact.Find(id);
+            db.TblContact.Remove(values);
+            db.SaveChanges();
+            return RedirectToAction("ContactList");
+        }
     }
 }

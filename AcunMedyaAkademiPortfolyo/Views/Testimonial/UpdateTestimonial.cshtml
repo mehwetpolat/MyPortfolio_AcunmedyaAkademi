@@ -1,0 +1,33 @@
+﻿@model AcunMedyaAkademiPortfolyo.Models.TblTestimonial
+@{
+    ViewBag.Title = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Referans Güncelleme</h2>
+
+<form method="post">
+    <label>Referans Id</label>
+    <input type="text" class="table table-bordered" value="@Model.TestimonialID" name="TestimonialID" readonly />
+    <br />
+    <label>Başlığı</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "table table-bordered" })
+    <br />
+    <label>Referans Açıklaması</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "table table-bordered" })
+    <br />
+    <label>Referans Adı Soyadı</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "table table-bordered" })
+    <br />
+    <label>Referans Resim Yolu</label>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "table table-bordered" })
+    <br />
+    <label>Referansın Mesleği</label>
+    @Html.TextBoxFor(x => x.Job, new { @class = "table table-bordered" })
+    <br />
+    <label>Referans Statüsü</label>
+    @Html.TextBoxFor(x => x.Status, new { @class = "table table-bordered" })
+    <br />
+
+    <button class="btn btn-success">Feature Güncelleme</button>
+</form>

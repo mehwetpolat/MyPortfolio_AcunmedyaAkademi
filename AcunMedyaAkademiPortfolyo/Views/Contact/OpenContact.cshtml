@@ -1,0 +1,37 @@
+﻿@model AcunMedyaAkademiPortfolyo.Models.TblContact
+
+@{
+    ViewBag.Title = "OpenContact";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Mesaj Detayları</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <td>@Model.ContactID</td>
+    </tr>
+    <tr>
+        <th>Ad Soyad</th>
+        <td>@Model.NameSurname</td>
+    </tr>
+    <tr>
+        <th>Mail</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Telefon</th>
+        <td>@Model.Phone</td>
+    </tr>
+    <tr>
+        <th>Mesaj</th>
+        <td>@Model.Message</td>
+    </tr>
+    <tr>
+        <th>Gönderim Tarihi</th>
+        <td>@Model.SendDate</td>
+    </tr>
+</table>
+
+<a href="/Contact/ContactList" class="btn btn-primary">Geri Dön</a>

@@ -1,0 +1,25 @@
+﻿@model AcunMedyaAkademiPortfolyo.Models.TblFeature
+@{
+    ViewBag.Title = "UpdateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<form method="post">
+    <label>Feature Id<</label>
+    <input type="text" class="table table-bordered" value="@Model.FeatureID" name="FeatureID" readonly />
+    <br />
+    <label>Adı Soyadı</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "table table-bordered" })
+    <br />
+    <label>Feature Açıklaması</label>
+    <textarea rows="4" class="table table-bordered" name="Description">@Model.Description</textarea>
+    <br />
+    <label>Proje Adı</label>
+    @Html.TextBoxFor(x => x.ProjectName, new { @class = "table table-bordered" })
+    <br />
+    <label>Feature Resim Yolu</label>
+    @Html.TextBoxFor(x => x.İmageUrl, new { @class = "table table-bordered" })
+    <br />
+
+    <button class="btn btn-success">Feature Güncelleme</button>
+</form>

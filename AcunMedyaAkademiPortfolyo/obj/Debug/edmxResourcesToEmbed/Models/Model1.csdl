@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DbDominicPortfolioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblAbout">
+    <Key>
+      <PropertyRef Name="AboutID" />
+    </Key>
+    <Property Name="AboutID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblCategory">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblProject" Relationship="Self.FK_TblProject_TblCategory" FromRole="TblCategory" ToRole="TblProject" />
+  </EntityType>
+  <EntityType Name="TblFeature">
+    <Key>
+      <PropertyRef Name="FeatureID" />
+    </Key>
+    <Property Name="FeatureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="İmageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblProject">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProjectDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" />
+    <NavigationProperty Name="TblCategory" Relationship="Self.FK_TblProject_TblCategory" FromRole="TblProject" ToRole="TblCategory" />
+  </EntityType>
+  <EntityType Name="TblService">
+    <Key>
+      <PropertyRef Name="ServiceID" />
+    </Key>
+    <Property Name="ServiceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="İmageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblTestimonial">
+    <Key>
+      <PropertyRef Name="TestimonialID" />
+    </Key>
+    <Property Name="TestimonialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Job" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <Association Name="FK_TblProject_TblCategory">
+    <End Role="TblCategory" Type="Self.TblCategory" Multiplicity="0..1" />
+    <End Role="TblProject" Type="Self.TblProject" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblCategory">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="TblProject">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbDominicPortfolioEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TblAbout" EntityType="Self.TblAbout" />
+    <EntitySet Name="TblCategory" EntityType="Self.TblCategory" />
+    <EntitySet Name="TblFeature" EntityType="Self.TblFeature" />
+    <EntitySet Name="TblProject" EntityType="Self.TblProject" />
+    <EntitySet Name="TblService" EntityType="Self.TblService" />
+    <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" />
+    <AssociationSet Name="FK_TblProject_TblCategory" Association="Self.FK_TblProject_TblCategory">
+      <End Role="TblCategory" EntitySet="TblCategory" />
+      <End Role="TblProject" EntitySet="TblProject" />
+    </AssociationSet>
+    <EntitySet Name="TblContact" EntityType="DbDominicPortfolioModel.TblContact" />
+  </EntityContainer>
+  <EntityType Name="TblContact">
+    <Key>
+      <PropertyRef Name="ContactID" />
+    </Key>
+    <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SendDate" Type="DateTime" Precision="0" />
+    <Property Name="IsRead" Type="Boolean" />
+  </EntityType>
+</Schema>

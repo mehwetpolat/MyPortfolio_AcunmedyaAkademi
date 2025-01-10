@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "CreateFeature";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<h2>Feature Sayfası</h2>
+
+<form method="post">
+    <label>İsim Soyisim</label>
+    <textarea rows="4" class="table table-bordered" name="NameSurname"></textarea>
+    <br />
+    <label>Açıklama</label>
+    <input type="text" class="table table-bordered" name="Description" />
+    <br />
+    <label>Proje Adı</label>
+    <input type="text" class="table table-bordered" name="ProjectName" />
+    <br />
+    <label>Resim Yolu</label>
+    <input type="text" class="table table-bordered" name="İmageUrl" />
+    <br />
+    <button class="btn btn-info">Projeyi Kaydet</button>
+</form>
